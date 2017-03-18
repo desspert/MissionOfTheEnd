@@ -9,7 +9,7 @@ Cube::Cube(const ci::Vec3f& _pos, const ci::Vec3f& _size, const ci::Vec3f& _rota
 
 void Cube::update()
 {
-	
+	ObjectBase::update();
 }
 
 void Cube::draw()

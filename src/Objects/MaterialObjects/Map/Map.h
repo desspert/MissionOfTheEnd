@@ -11,6 +11,5 @@ public:
 		const ci::Vec3f& _rotate, const std::string& _name, 
 		const std::string& _path,
 		const std::string& _obj_path);
-	void update() override;
 	void draw() override;
 };

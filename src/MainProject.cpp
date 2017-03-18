@@ -43,7 +43,7 @@ void MainProject::mouseDrag(ci::app::MouseEvent event)
 
 void MainProject::mouseDown(ci::app::MouseEvent event)
 {
-	scene.mouseMove(event);
+	scene.mouseDown(event);
 }
 
 void MainProject::keyUp(ci::app::KeyEvent event) {

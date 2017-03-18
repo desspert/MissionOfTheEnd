@@ -6,11 +6,10 @@ MainCamera::MainCamera() : ObjectBase(ci::Vec3f(0,0,0), ci::Vec3f(0, 0, 0), ci::
 		// Ž‹–ìŠp
 		60.0f,
 		// near-z, far-z
-		1.0f, 10000.0f);
+		0.1f, 10000.0f);
 	camera.setEyePoint(pos);
 	camera.setCenterOfInterestPoint(ci::Vec3f(0, 0.0f, 1000.0f));
 	scatter = 0;
-
 
 	ci::gl::pushModelView();
 	parent = ci::Matrix44f::identity();
@@ -96,8 +95,8 @@ void weaponScatter(float& scatter,ci::Vec3f& insert_point, ci::Vec2f& camera_ang
 	insert_point.z = 1 * cos(camera_angle.x) * 1 * cos(camera_angle.y);
 	insert_point.y = sin(camera_angle.y);
 
-	camera.setEyePoint(pos + ci::Vec3f(0, 0.5f, 0) - ci::Vec3f(scatter*sin(camera_angle.x), 0.0f, scatter*cos(camera_angle.x)));
-	camera.setCenterOfInterestPoint(pos + insert_point + ci::Vec3f(0, 0.5f, 0) - ci::Vec3f(scatter*sin(camera_angle.x), 0.0f, scatter*cos(camera_angle.x)));
+	camera.setEyePoint(pos + ci::Vec3f(0, 0.5f, 0) - ci::Vec3f(scatter*sin(camera_angle.x), scatter, scatter*cos(camera_angle.x)));
+	camera.setCenterOfInterestPoint(pos + insert_point + ci::Vec3f(0, 0.5f, 0) - ci::Vec3f(scatter*sin(camera_angle.x), scatter, scatter*cos(camera_angle.x)));
 	ray.setOrigin(pos + ci::Vec3f(0, 0.5f, 0) - ci::Vec3f(scatter*sin(camera_angle.x), 0.0f, scatter*cos(camera_angle.x)));
 	ray.setDirection(insert_point * (1000, 1000, 1000) + ci::Vec3f(0, 0.5f, 0) - ci::Vec3f(scatter*sin(camera_angle.x), 0.0f, scatter*cos(camera_angle.x)));
 }

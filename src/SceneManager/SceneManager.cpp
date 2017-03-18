@@ -1,5 +1,6 @@
 #include "SceneManager.h"
 #include "../Utility/Input/Input.h"
+#include "../Utility/Easing/Easing.h"
 SceneManager::SceneManager() {
 	scene = new GameMain();
 }
@@ -13,11 +14,14 @@ void SceneManager::setup()
 void SceneManager::update(const float& delta_time)
 {
 	scene->update(delta_time);
+	
 }
 
 void SceneManager::draw()
 {
 	scene->draw();
+	ENV.flashInput();
+	c_Easing::update();
 }
 
 void SceneManager::shift(const SceneName& scene_name)

@@ -15,12 +15,6 @@ Map::Map(const ci::Vec3f& _pos, const ci::Vec3f& _size, const ci::Vec3f& _rotate
 	indices = mesh.getIndices();
 }
 
-void Map::update()
-{
-	//box = std::make_shared<AxisAlignedBox3f>(pos - size / 2, pos + size / 2);
-
-}
-
 void Map::draw()
 {
 
