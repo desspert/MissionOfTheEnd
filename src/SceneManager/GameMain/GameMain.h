@@ -9,7 +9,9 @@ class Sphere;
 class WeaponBase;
 class Spawner;
 class Map;
-
+class GameMainUI;
+class Perticle;
+class Goal;
 struct EnemyData {
 	EnemyData(const ci::TriMesh& _body, const ci::TriMesh& _left_leg,
 		const ci::TriMesh& _right_leg) :body(_body),
@@ -37,11 +39,16 @@ struct EnemyPath {
 class GameMain : public SceneBase
 {
 private:
+	bool is_goal;
+
+	std::shared_ptr<GameMainUI> ui;
+
 	std::shared_ptr<Player> player;
+	std::list<std::shared_ptr<Goal>> goal;
 	std::list<std::shared_ptr<ObjectBase>> object;
 	std::list<std::shared_ptr<Spawner>> spawner;
 	std::list<std::shared_ptr<WeaponBase>> weapons;
-
+	std::list<std::shared_ptr<Perticle>> perticle;
 
 	std::shared_ptr<Map> map;
 	std::shared_ptr<Sphere> skydome;
@@ -57,14 +64,11 @@ private:
 public:
 	GameMain();
 	
-	/*void damage(std::list<std::shared_ptr<ObjectBase>> obj,
-		std::list<std::shared_ptr<WeaponBase>> weap, Vec3f ray_point);*/
-	//void setUpdate(std::list<std::shared_ptr<ObjectBase>> obj);
-	
-
-	//void col();
+	void soundSetup();
+	void uiSetup();
 	void enemysPathAdd();
 	void enemysLoading();
+	void breakWallSetup();
 	void mapObjectsSetup();
 	void mapTipSetup();
 	void lightSetup();
@@ -72,14 +76,16 @@ public:
 	void setup() override;
 
 	void rayToAABBCollision(std::shared_ptr<ObjectBase>& obj, ci::Ray ray, ci::Vec3f& result);
-
+	void isGoal();
 	ci::Vec3f rideMap(ci::Ray ray, const ci::Vec3f& pos, const ci::Vec3f& size);
 	void physicsJudge(std::shared_ptr<ObjectBase>& it);
 	void collision(std::shared_ptr<ObjectBase>& it);
+	void uiUpdate(const float& delta_time);
 	void enemySpawn();
-	void playerUpdate();
+	void playerUpdate(const float& delta_time);
+	void weaponUpdate(const float& delta_time);
 	void update(const float& delta_time) override;
-	void isDead();
+	void eraseObjects();
 	void draw() override;
 	
 	void drawSkyDome();

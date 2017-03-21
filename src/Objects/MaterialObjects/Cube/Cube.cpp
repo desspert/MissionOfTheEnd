@@ -1,10 +1,11 @@
 #include "Cube.h"
 #include "../../../Utility/Texture.h"
 Cube::Cube(const ci::Vec3f& _pos, const ci::Vec3f& _size, const ci::Vec3f& _rotate,
-	std::string _name, std::string _path)
+	const std::string& _name, const std::string& _path)
 	: MaterialBase(_pos, _size, _rotate, _name, _path) {
 	TEX.set(_name, _path);
 	box = std::make_shared<ci::AxisAlignedBox3f>(pos - size / 2, pos + size / 2);
+	object_type = ObjectType::WALL;
 }
 
 void Cube::update()

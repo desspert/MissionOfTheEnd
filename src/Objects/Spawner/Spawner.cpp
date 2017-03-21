@@ -12,7 +12,7 @@ int  Spawner::getRandom()
 }
 
 //スポーン位置をランダムで返す
-const ci::Vec3f& Spawner::getEnemyPos()
+ci::Vec3f Spawner::getEnemyPos()
 {
 	float pos_x = pos.x - size.x / 2;
 	float pos_z = pos.z - size.z / 2;
@@ -36,6 +36,7 @@ const ci::Vec3f& Spawner::getEnemyPos()
 
 void Spawner::update()
 {
+	ObjectBase::update();
 	spawn = false;
 	decrement--;
 	if (decrement == 0) {

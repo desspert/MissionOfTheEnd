@@ -10,6 +10,7 @@ Deagle::Deagle(const ci::Vec3f & _pos,
 	:WeaponBase(_pos, _size, _angle, _name, _path)
 {
 	TEX.set(_name, _path);
+	ride_map = ci::Ray(_pos + ci::Vec3f(4, 4, 4), ci::Vec3f(0, -1000, 0));
 }
 
 void Deagle::loading() {
@@ -25,8 +26,8 @@ void Deagle::loading() {
 
 void Deagle::materialSetup() {
 
-	material = ci::gl::Material(ci::ColorA(1, 1, 1, 1.0f),    // ŠÂ‹«Œõ‚ª“–‚½‚Á‚½‚ÌF
-		ci::ColorA(0.5f, 0.5f, 0.5f, 1.0f),    // ŠgUŒõ‚ª“–‚½‚Á‚½‚ÌF
+	material = ci::gl::Material(ci::ColorA(0.3f, 0.3f, 0.3f, 1.0f),    // ŠÂ‹«Œõ‚ª“–‚½‚Á‚½‚ÌF
+		ci::ColorA(0.3f, 0.3f, 0.3f, 1.0f),    // ŠgUŒõ‚ª“–‚½‚Á‚½‚ÌF
 		ci::ColorA(1.0f, 1.0f, 1.0f, 1.0f),    // ‹¾–ÊŒõ‚ª“–‚½‚Á‚½‚ÌF
 		80.0f,                             // ‹¾–Ê”½Ë‚Ì‰s‚³(’l‚ª‘å‚«‚¢‚Ù‚Ç‰s‚­‚È‚é)
 		ci::ColorA(1.0f, 1.0f, 1.0f, 1.0f));   // ©ŒÈ”­ŒõF
@@ -35,14 +36,16 @@ void Deagle::materialSetup() {
 
 void Deagle::statusInit() {
 
-	status.rate = 10;
+	status.rate = 0.1f;
 	status.attack_point = 50;
 	status.scatter = 0.5f;
 	status.bullets = 7;
 	status.max_bullets = 7;
 	status.relord_motion = 0.7f;
+	status.relord_time = 0.7f;
+	status.muzzle_pos = ci::Vec2f(850, 430);
 	status.matrix_t = ci::Vec3f(0.060f, -0.05f, -0.10f);
-	status.matrix_r = ci::Vec3f(180 * M_PI / 180 , 180 * M_PI / 180, 0);
+	status.matrix_r = ci::Vec3f(180 * M_PI / 180, 180 * M_PI / 180, 0);
 }
 
 void Deagle::motionReset() {
@@ -56,6 +59,7 @@ void Deagle::motionReset() {
 }
 void Deagle::setup()
 {
+	ObjectBase::update();
 	loading();
 	materialSetup();
 	statusInit();
@@ -65,26 +69,23 @@ void Deagle::setup()
 	weapon_type = WeaponType::Deagle;
 }
 
-void Deagle::fire()
+void Deagle::fire(const float& delta_time)
 {
+	motion.trigger = false;
 	if (motion.relord == true) return;
 	if (status.bullets <= 0) return;
-	if (ENV.pushKey(ci::app::MouseEvent::LEFT_DOWN)) {
-		motion.trigger = true;
-	}
-
-	if (motion.trigger == true) {
-		motion.rate++;
-		if (motion.rate == 1) {
+	motion.rate -= delta_time;
+	if (motion.rate <= 0) {
+		if (ENV.pushKey(ci::app::MouseEvent::LEFT_DOWN)) {
+			motion.trigger = true;
 			SE.find(name)->start();
 			status.bullets--;
 			CAMERA.cameraScatter(status.scatter);
 			motion.scatter = 0.6f;
+			motion.rate = status.rate;
 		}
-		if (motion.rate == status.rate) {
-			motion.rate = 0;
-			motion.trigger = false;
-		}
+		
 	}
+
 }
 

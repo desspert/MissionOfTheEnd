@@ -13,5 +13,5 @@ public:
 	void statusInit() override;
 	void motionReset() override;
 	void setup() override;
-	void fire();
+	void fire(const float& delta_time) override;
 };

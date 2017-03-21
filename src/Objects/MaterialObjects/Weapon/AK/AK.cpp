@@ -9,6 +9,7 @@ AK::AK(const ci::Vec3f & _pos,
 	:WeaponBase(_pos, _size, _angle, _name, _path)
 {
 	TEX.set(_name, _path);
+	ride_map = ci::Ray(_pos + ci::Vec3f(4, 4, 4), ci::Vec3f(0, -1000, 0));
 }
 
 void AK::loading() {
@@ -35,12 +36,14 @@ void AK::materialSetup() {
 
 void AK::statusInit() {
 
-	status.rate = 8;
-	status.attack_point = 30;
+	status.rate = 0.08f;
+	status.attack_point = 40;
 	status.scatter = 0.5f;
 	status.bullets = 30;
 	status.max_bullets = 30;
 	status.relord_motion = 0.7f;
+	status.relord_time = 1.0f;
+	status.muzzle_pos = ci::Vec2f(780, 415);
 	status.matrix_t = ci::Vec3f(0.4f, -0.3f, -0.7f);
 	status.matrix_r = ci::Vec3f(0, 2.9f*M_PI / 6, 0);
 }
@@ -56,12 +59,13 @@ void AK::motionReset() {
 }
 void AK::setup()
 {
+	ObjectBase::update();
 	loading();
 	materialSetup();
 	statusInit();
 	motionReset();
 	matrix = ci::Matrix44f::identity();
-	drop = false;
+	drop = true;
 	weapon_type = WeaponType::AK;
 }
 

@@ -13,4 +13,5 @@ public:
 	void statusInit() override;
 	void motionReset() override;
 	void setup() override;
+	void drawDropWeapon() override;
 };

@@ -47,7 +47,9 @@ public:
 		ci::TriMesh _left_leg,
 		ci::TriMesh _right_leg);
 
-	
+	const int& getAttack() {
+		return status.attack;
+	};
 	void update() override;
 
 	void draw() override;

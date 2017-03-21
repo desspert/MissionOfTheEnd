@@ -14,6 +14,7 @@ EnemyBase::EnemyBase(const ci::Vec3f & _pos,
 	: DamageObject(_pos, _size, _rotate, _name, _body_path)
 	, leg_name(_leg_name),body(_body), 
 	left_leg(_left_leg), right_leg(_right_leg){
+	object_type = ObjectType::Enemy;
 }
 
 void EnemyBase::trackingToPlayer()
@@ -34,16 +35,16 @@ void EnemyBase::walk()
 	motion.leg_inc += 0.1;
 	motion.move_left_leg = (sin(motion.leg_inc)) * 60;
 	motion.move_right_leg = ((sin(motion.leg_inc - 3)) * 60);
+	gravityApply();
 }
 
 void EnemyBase::update()
 {
+	ObjectBase::update();
 	DamageObject::damageUpdate();
 	walk();
 	trackingToPlayer();
 	box = std::make_shared<ci::AxisAlignedBox3f>(pos - size / 2, pos + size / 2);
-	pos.y -= 2;
-	ObjectBase::update();
 }
 
 void EnemyBase::drawBody()
@@ -53,6 +54,9 @@ void EnemyBase::drawBody()
 	TEX.get(name).enableAndBind();
 	ci::gl::translate(pos - ci::Vec3f(0, 0.5, 0));
 	ci::gl::rotate(ci::Vec3f(0, -(90 * M_PI / 180 + motion.angle) * 180 / M_PI, 0));
+	if (hp < 0) {
+		ci::gl::rotate(ci::Vec3f(0, 0, dead_motion));
+	}
 	ci::gl::scale(status.scale);
 	material.apply();
 	ci::gl::draw(body);
@@ -60,9 +64,6 @@ void EnemyBase::drawBody()
 
 	ci::gl::popModelView();
 
-	ci::gl::pushModelView();
-	ci::gl::drawStrokedCube(pos, size);
-	ci::gl::popModelView();
 }
 
 void EnemyBase::drawLeftLeg()
@@ -97,6 +98,7 @@ void EnemyBase::drawRightLeg()
 void EnemyBase::draw()
 {
 	drawBody();
+	if (hp < 0)return;
 	drawLeftLeg();
 	drawRightLeg();
 }

@@ -9,6 +9,7 @@ Tompson::Tompson(const ci::Vec3f & _pos,
 	:WeaponBase(_pos, _size, _angle, _name, _path)
 {
 	TEX.set(_name, _path);
+	ride_map = ci::Ray(_pos + ci::Vec3f(4, 4, 4), ci::Vec3f(0, -1000, 0));
 }
 
 void Tompson::loading() {
@@ -35,12 +36,14 @@ void Tompson::materialSetup() {
 
 void Tompson::statusInit() {
 
-	status.rate = 6;
-	status.attack_point = 30;
+	status.rate = 0.07f;
+	status.attack_point = 25;
 	status.scatter = 0.5f;
 	status.bullets = 50;
 	status.max_bullets = 50;
 	status.relord_motion = 0.7f;
+	status.relord_time = 1.5f;
+	status.muzzle_pos = ci::Vec2f(700, 415);
 	status.matrix_t = ci::Vec3f(0.2, -0.15,-0.6f);
 	status.matrix_r = ci::Vec3f(0, 94 * M_PI / 180,0);
 }
@@ -56,12 +59,13 @@ void Tompson::motionReset() {
 }
 void Tompson::setup()
 {
+	ObjectBase::update();
 	loading();
 	materialSetup();
 	statusInit();
 	motionReset();
 	matrix = ci::Matrix44f::identity();
-	drop = false;
+	drop = true;
 	weapon_type = WeaponType::Tompson;
 }
 

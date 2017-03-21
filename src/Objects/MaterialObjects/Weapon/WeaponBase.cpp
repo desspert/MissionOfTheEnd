@@ -4,25 +4,21 @@
 #include "../../Camera/Camera.h"
 #include "../../../Utility/Easing/Easing.h"
 #include "../../../Utility/Texture.h"
-void WeaponBase::fire()
+void WeaponBase::fire(const float& delta_time)
 {
 	motion.trigger = false;
 	if (motion.relord == true) return;
 	if (status.bullets <= 0) return;
 	if (ENV.pressKey(ci::app::MouseEvent::LEFT_DOWN)) {
-		motion.rate++;
+		motion.rate -= delta_time;
 
-		if (motion.rate == 1) {
+		if (motion.rate <= 0) {
 			SE.find(name)->start();
 			status.bullets--;
 			CAMERA.cameraScatter(status.scatter);
 			motion.scatter = status.scatter;
 			motion.trigger = true;
-		}
-
-		if (motion.rate == status.rate) {
-			motion.rate = 0;
-			
+			motion.rate = status.rate;
 		}
 	}
 	if (ENV.pullKey(ci::app::MouseEvent::LEFT_DOWN)) {
@@ -32,43 +28,47 @@ void WeaponBase::fire()
 
 }
 
-void WeaponBase::relordMotion()
+static void tweek(float t, float b, float e, float& r) {
+	r = (e - b) * t + b;
+}
+void WeaponBase::relordMotion(const float& delta_time)
 {
 
 	if (status.bullets == status.max_bullets) return;
 
 	if (ENV.pushKey(ci::app::KeyEvent::KEY_r)) {
 		motion.relord = true;
+		SE.find("relord")->start();
 	}
 
 	if (!motion.relord) return;
 
-	motion.relord_time++;
+	motion.relord_time += delta_time;
 
-	if (motion.relord_time == 1) {
-		SE.find("relord")->start();
-		c_Easing::apply(motion.relord_motion, status.relord_motion, EasingFunction::CubicIn, 30);
-		c_Easing::apply(motion.relord_motion, 0.0f, EasingFunction::CubicIn, 30);
+	if (motion.relord_time <= status.relord_time/2) {
+		tweek(motion.relord_time /(status.relord_time / 2), 0, status.relord_motion,motion.relord_motion);
 	}
 
-	if (motion.relord_time == 30) {
-		SE.find("end")->start();
+	if (motion.relord_time >= status.relord_time / 2 &&
+		motion.relord_time <= status.relord_time) {
+		tweek(motion.relord_time / status.relord_time, status.relord_motion, 0, motion.relord_motion);
 	}
-
-	if (motion.relord_time >= 60) {
+	if (motion.relord_time >= status.relord_time) {
 		motion.relord = false;
+		SE.find("end")->start();
 		motion.relord_time = 0;
 		status.bullets = status.max_bullets;
+		motion.relord_motion = 0;
 	}
 
 }
 
 
-void WeaponBase::update()
+void WeaponBase::update(const float& delta_time)
 {
 	if (drop == true) return;
-	fire();
-	relordMotion();
+	fire(delta_time);
+	relordMotion(delta_time);
 }
 void WeaponBase::drawHaveWeapon() {
 	if (drop == true) return;

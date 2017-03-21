@@ -31,8 +31,7 @@ public:
 	~MainCamera(){}
 	void draw();
 	void draw2d();
-	void move();
-	void jump();
+	
 	void update();
 	void setup();
 	void incliment_camera_angle(ci::Vec2f mouse_vec)

@@ -16,3 +16,18 @@ void MaterialBase::setup()
 		ci::ColorA(0.0f, 0.0f, 0.0f, 1.0f));   // ©ŒÈ”­ŒõF
 }
 
+void MaterialBase::gravityApply()
+{
+	if (gravity < 1) {
+		vec *= 1.01f;
+		gravity += vec;
+	}
+	if (gravity > 0.2f) {
+		pos.y -= 0.2f;
+	}
+	else {
+		pos.y -= gravity;
+	}
+	
+}
+

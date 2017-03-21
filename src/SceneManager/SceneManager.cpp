@@ -1,13 +1,17 @@
 #include "SceneManager.h"
 #include "../Utility/Input/Input.h"
 #include "../Utility/Easing/Easing.h"
+#include "../Objects/Camera/Camera.h"
+#include "../Utility/SoundManager.h"
 SceneManager::SceneManager() {
-	scene = new GameMain();
+	scene = std::make_unique<Title>();
 }
 
 void SceneManager::setup()
 {
 	scene->setup();
+	CAMERA.setup();
+	SE.setup();
 }
 
 
@@ -26,18 +30,17 @@ void SceneManager::draw()
 
 void SceneManager::shift(const SceneName& scene_name)
 {
-	delete scene;
 	switch (scene_name) {
 	case SceneName::TITLE:
-		scene = new Title();
+		scene = std::make_unique<Title>();
 		scene->setup();
 		break;
 	case SceneName::GAMEMAIN:
-		scene = new GameMain();
+		scene = std::make_unique<GameMain>();
 		scene->setup();
 		break;
 	case SceneName::RESULT:
-		scene = new Result();
+		scene = std::make_unique<Result>();
 		scene->setup();
 		break;
 	}

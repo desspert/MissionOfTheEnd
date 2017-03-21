@@ -10,11 +10,13 @@ enum class WeaponType {
 
 struct WeaponStatus {
 	int attack_point;
-	int rate;
+	float rate;
+	float relord_time;
 	int bullets;
 	int max_bullets;
 	float scatter;
 	float relord_motion;
+	ci::Vec2f muzzle_pos;
 	ci::Vec3f matrix_t;
 	ci::Vec3f matrix_r;
 };
@@ -22,8 +24,8 @@ struct WeaponStatus {
 struct WeaponMotion {
 	bool trigger;
 	bool relord;
-	int rate;
-	int relord_time;
+	float rate;
+	float relord_time;
 	float relord_motion;
 	float rotation;
 	float scatter;
@@ -47,8 +49,8 @@ protected:
 	virtual void statusInit() {}
 	virtual void motionReset() {}
 
-	virtual void fire();
-	virtual void relordMotion();
+	virtual void fire(const float& delta_time);
+	virtual void relordMotion(const float& delta_time);
 	virtual void drawHaveWeapon();
 	virtual void drawDropWeapon();
 public:
@@ -62,11 +64,20 @@ public:
 	WeaponType getWeapon() {
 		return weapon_type;
 	}
+	ci::Vec3f getSize() {
+		return ci::Vec3f(4, 4, 4);
+	}
 	const WeaponStatus& getStatus() {
 		return status;
 	}
-	const bool& getDrop() {
+	const bool& isDrop() {
 		return drop;
+	}
+	void setDrop(bool value) {
+		drop = value;
+	}
+	const int& getBullets() {
+		return status.bullets;
 	}
 	const bool& isTrigger() {
 		return motion.trigger;
@@ -82,7 +93,6 @@ public:
 			drop = true;
 		}
 	}
-
-	void update() override;
+	void update(const float& delta_time) override;
 	void draw() override;
 };

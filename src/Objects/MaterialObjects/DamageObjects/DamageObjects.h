@@ -5,7 +5,7 @@ class DamageObject : public MaterialBase
 {
 protected:
 	float color_r = 0;
-	float color_a = 1;
+	float dead_motion = 0;
 public:
 	DamageObject(const ci::Vec3f & _pos,
 		const ci::Vec3f & _size,

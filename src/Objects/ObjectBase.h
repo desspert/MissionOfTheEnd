@@ -2,7 +2,11 @@
 #include <memory>
 #include "cinder/app/AppNative.h"
 #include "cinder/AxisAlignedBox.h"
-
+enum ObjectType {
+	WALL = 0,
+	Enemy = 1,
+	BREAKWALL = 2
+};
 class ObjectBase {
 protected:
 	ci::Ray ride_map;
@@ -13,9 +17,8 @@ protected:
 	ci::Vec3f size;
 	ci::Vec3f rotate;
 	bool arrive;
-	float gravity;
-	int type;
 	int hp;
+	ObjectType object_type;
 public:
 	ObjectBase(const ci::Vec3f& _pos, const ci::Vec3f& _size, const ci::Vec3f& _rotate) 
 		: pos(_pos),size(_size), rotate(_rotate),ride_map(ci::Ray(_pos + ci::Vec3f(0, size.y, 0), ci::Vec3f(0, -1000, 0))) {
@@ -39,6 +42,9 @@ public:
 	bool getArrive() {
 		return arrive;
 	};
+	const ObjectType& getObjectType() {
+		return object_type;
+	}
 	std::shared_ptr<ci::AxisAlignedBox3f> getAABB() {
 		return box;
 	};
@@ -62,6 +68,6 @@ public:
 	virtual void setup() {};
 	virtual void draw() {};
 	virtual void update() { ride_map.setOrigin(pos); };
-
+	virtual void update(const float& delta_time) { };
 };
 

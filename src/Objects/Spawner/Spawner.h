@@ -31,9 +31,9 @@ public:
 		return speed;
 	}
 
+	//Release‚Å‰½ŒÌ‚©“®‚©‚È‚¢‚Ì‚ÅconstQÆ‚Í‚µ‚È‚¢
 	int getRandom();
-
-	const ci::Vec3f& getEnemyPos();
+	ci::Vec3f getEnemyPos();
 
 	void update() override;
 };

@@ -20,14 +20,14 @@ void DamageObject::damageUpdate()
 	if (color_r < 0) {
 		color_r = 0;
 	}
-	material.setAmbient(ci::ColorA8u(ci::ColorA(1, 1 - color_r, 1 - color_r, color_a)));
+	material.setAmbient(ci::ColorA8u(ci::ColorA(1, 1 - color_r, 1 - color_r, 1.0f)));
 }
 
 bool DamageObject::isDead()
 {
 	if (hp <= 0) {
-		color_a -= 0.1f;
-		if (color_a < 0) {
+		dead_motion +=3;
+		if (dead_motion > 90) {
 			return true;
 		}
 	}
