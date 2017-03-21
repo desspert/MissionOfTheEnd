@@ -10,7 +10,6 @@ void Title::setup()
 	SE.registerFilePlayerNode("TitleBgm", "Sound/Music/haijin.mp3");
 	SE.find("TitleBgm")->start();
 	SE.find("TitleBgm")->setLoopEnabled(true);
-	SE.find("TitleBgm")->disable();
 }
 
 
@@ -25,6 +24,16 @@ void Title::draw()
 	ci::gl::clear(ci::ColorA8u(1, 1, 1, 1));
 	CAMERA.draw2d();
 	ui->draw();
-	
+	shift();
+}
+
+void Title::shift()
+{
+	if (ENV.pushKey(ci::app::KeyEvent::KEY_SPACE)) {
+		SE.find("TitleBgm")->disable();
+		SE.allStop();
+		SE.allCrear();
+		SCENE.shift(game::SceneName::GAMEMAIN);
+	}
 }
 

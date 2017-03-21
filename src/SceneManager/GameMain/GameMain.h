@@ -52,7 +52,6 @@ private:
 
 	std::shared_ptr<Map> map;
 	std::shared_ptr<Sphere> skydome;
-	std::shared_ptr<Sphere> res;
 	
 	std::shared_ptr<ci::gl::Light> light;
 	
@@ -87,7 +86,7 @@ public:
 	void update(const float& delta_time) override;
 	void eraseObjects();
 	void draw() override;
-	
+	void shift();
 	void drawSkyDome();
 };
 

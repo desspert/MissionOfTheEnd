@@ -1,7 +1,5 @@
 #include "TitleUI.h"
 #include "../../../Utility/Input/Input.h"
-#include "../../../SceneManager/SceneManager.h"
-#include "../../../Utility/SoundManager.h"
 void TitleUI::setup(const dess::SceneName & name)
 {
 	UIPlate::setup(name);
@@ -20,10 +18,5 @@ void TitleUI::update(const float& delta_time)
 void TitleUI::draw()
 {
 	UIPlate::draw();
-	if (ENV.pushKey(ci::app::KeyEvent::KEY_SPACE)) {
-		SE.find("TitleBgm")->disable();
-		SE.allStop();
-		SE.allCrear();
-		SCENE.shift(SceneName::GAMEMAIN);
-	}
+	
 }

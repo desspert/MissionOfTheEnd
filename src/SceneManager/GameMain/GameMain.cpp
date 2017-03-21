@@ -151,7 +151,6 @@ void GameMain::mapObjectsSetup()
 
 	enemysLoading();
 	breakWallSetup();
-	res = std::make_shared<Sphere>(ci::Vec3f(0, 0, 0), ci::Vec3f(0.1f, 0.1f, 0.1f), ci::Vec3f(0, 0, 0), "jimen", "Objects/Wall/039.jpg");
 	skydome = std::make_shared<Sphere>(ci::Vec3f(0, 0, 0), ci::Vec3f(1000, 1000, 1000), ci::Vec3f(0, 0, 0), "skydome", "Objects/SkyDome/Skydome151004y.jpg");
 
 	
@@ -162,7 +161,6 @@ void GameMain::mapObjectsSetup()
 
 
 	skydome->setup();
-	res->setup();
 }
 
 void GameMain::mapTipSetup()
@@ -327,7 +325,6 @@ void GameMain::collision(std::shared_ptr<ObjectBase>& it)
 					for (int i = 0; i < 4; i++) {
 						perticle.push_back(std::make_shared<Perticle>(result, ci::Vec3f(0.1, 0.1, 0.1), ci::Vec3f(0, 0, 0), "", ""));
 					}
-					res->setPos(result);
 					break;
 				}
 			}
@@ -467,12 +464,21 @@ void GameMain::draw()
 	}
 	map->draw();
 	drawSkyDome();
-	res->draw();
 	light->disable();
 
 	ci::gl::disable(GL_LIGHTING);
 	CAMERA.draw2d();
 	ui->draw();
+	shift();
+}
+
+void GameMain::shift()
+{
+	if (is_goal == true) {
+		SE.allStop();
+		SE.allCrear();
+		SCENE.shift(game::SceneName::TITLE);
+	}
 }
 
 void GameMain::drawSkyDome()

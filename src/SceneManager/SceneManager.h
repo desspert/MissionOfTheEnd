@@ -19,7 +19,7 @@ public:
 	void setup();
 	void update(const float& delta_time);
 	void draw();
-	void shift(const SceneName& scene);
+	void shift(const game::SceneName& scene);
 	void keyDown(const ci::app::KeyEvent& event);
 	void keyUp(const ci::app::KeyEvent& event);
 	void mouseDown(const ci::app::MouseEvent& event);

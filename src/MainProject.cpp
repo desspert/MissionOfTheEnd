@@ -4,7 +4,6 @@
 #include "cinder/Timeline.h"
 class MainProject : public ci::app::AppNative {
 private:
-	SceneManager scene;
 	float delta_time;
 public:
 	void prepareSettings(Settings* settings);
@@ -27,46 +26,46 @@ void MainProject::prepareSettings(Settings* settings) {
 
 void MainProject::setup()
 {
-	scene.setup();
+	SCENE.setup();
 	ci::gl::enableAlphaBlending();
 }
 
 void MainProject::mouseMove(ci::app::MouseEvent event)
 {
-	scene.mouseMove(event);
+	SCENE.mouseMove(event);
 
 }
 void MainProject::mouseDrag(ci::app::MouseEvent event)
 {
-	scene.mouseMove(event);
+	SCENE.mouseMove(event);
 }
 
 void MainProject::mouseDown(ci::app::MouseEvent event)
 {
-	scene.mouseDown(event);
+	SCENE.mouseDown(event);
 }
 
 void MainProject::keyUp(ci::app::KeyEvent event) {
-	scene.keyUp(event);
+	SCENE.keyUp(event);
 }
 
 void MainProject::keyDown(ci::app::KeyEvent event) {
-	scene.keyDown(event);
+	SCENE.keyDown(event);
 }
 void MainProject::mouseUp(ci::app::MouseEvent event)
 {
-	scene.mouseUp(event);
+	SCENE.mouseUp(event);
 }
 void MainProject::update()
 {
 	delta_time = std::abs(delta_time - timeline().getCurrentTime());
-	scene.update(delta_time);
+	SCENE.update(delta_time);
 	delta_time = timeline().getCurrentTime();
 }
 
 void MainProject::draw()
 {
-	scene.draw();
+	SCENE.draw();
 }
 
 

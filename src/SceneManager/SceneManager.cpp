@@ -18,7 +18,6 @@ void SceneManager::setup()
 void SceneManager::update(const float& delta_time)
 {
 	scene->update(delta_time);
-	
 }
 
 void SceneManager::draw()
@@ -28,20 +27,20 @@ void SceneManager::draw()
 	c_Easing::update();
 }
 
-void SceneManager::shift(const SceneName& scene_name)
+void SceneManager::shift(const game::SceneName& scene_name)
 {
 	switch (scene_name) {
-	case SceneName::TITLE:
-		scene = std::make_unique<Title>();
-		scene->setup();
+	case game::SceneName::TITLE:
+		SceneManager::get().scene = std::make_unique<Title>();
+		SceneManager::get().scene->setup();
 		break;
-	case SceneName::GAMEMAIN:
-		scene = std::make_unique<GameMain>();
-		scene->setup();
+	case game::SceneName::GAMEMAIN:
+		SceneManager::get().scene = std::make_unique<GameMain>();
+		SceneManager::get().scene->setup();
 		break;
-	case SceneName::RESULT:
-		scene = std::make_unique<Result>();
-		scene->setup();
+	case game::SceneName::RESULT:
+		SceneManager::get().scene = std::make_unique<Result>();
+		SceneManager::get().scene->setup();
 		break;
 	}
 }
