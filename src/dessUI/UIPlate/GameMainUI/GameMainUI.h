@@ -4,8 +4,8 @@
 class GameMainUI : public UIPlate
 {
 private :
-	int max_hp;
 	int kills;
+	int boss_max_hp;
 public:
 	
 	void setHP(const int& hp) {
@@ -22,8 +22,22 @@ public:
 		ui_data["MuzzleFlash"]->setPos(muzzle_pos.x, muzzle_pos.y);
 		ui_data["MuzzleFlash"]->setActive(trigger);
 	}
-
+	void getWeapon(const bool& collision) {
+		ui_data["G"]->setActive(collision);
+	}
+	void setGoal() {
+		ui_data["Clear"]->setActive(true);
+	}
+	void setBossMaxHP(const int& boss_hp) {
+		boss_max_hp = boss_hp;
+	}
+	void setBossHP(const int& boss_hp) {
+		ui_data["BossHP"]->gaugeChangeX(static_cast<float>(boss_hp), boss_max_hp);
+	}
+	
 	void setup(const dess::SceneName& name) override;
+	void bossSetup();
+	void goal();
 	void update(const float& delta_time) override;
 	void draw() override;
 

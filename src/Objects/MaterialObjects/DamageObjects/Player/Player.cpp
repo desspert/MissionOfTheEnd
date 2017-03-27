@@ -20,19 +20,6 @@ void Player::setup()
 void Player::jump()
 {
 	
-	/*if (jump_flag == false) {
-	if (ENV.pressKey(KeyEvent::KEY_w) ||
-	ENV.pressKey(KeyEvent::KEY_a) ||
-	ENV.pressKey(KeyEvent::KEY_s) ||
-	ENV.pressKey(KeyEvent::KEY_d)) {
-	walk++;
-	if (walk == 15) {
-	SE.buffer_player->setBuffer(SE.getSound("walk"));
-	SE.buffer_player->start();
-	walk = 0;
-	}
-	}
-	}*/
 	if (gravity > 0.99f) {
 		if (ENV.pushKey(ci::app::KeyEvent::KEY_SPACE)) {
 			gravity = -0.15f;
@@ -73,5 +60,4 @@ void Player::update(const float& delta_time)
 void Player::draw()
 {
 	CAMERA.draw();
-	ci::gl::drawStrokedCube(pos, size);
 }

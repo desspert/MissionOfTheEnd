@@ -18,6 +18,7 @@ void SceneManager::setup()
 void SceneManager::update(const float& delta_time)
 {
 	scene->update(delta_time);
+	CAMERA.shake(delta_time);
 }
 
 void SceneManager::draw()

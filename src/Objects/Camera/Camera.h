@@ -24,7 +24,9 @@ private:
 	float scatter;
 	int walk;
 	ci::Vec3f vec;
-	bool jump_flag;
+	float shake_range;
+	float shake_seconds;
+
 public:
 	MainCamera();
 	MainCamera(const ci::Vec3f& _pos, const ci::Vec3f& _size, const ci::Vec3f& _rotate);
@@ -45,11 +47,13 @@ public:
 	void cameraScatter(float sc) {
 		scatter += sc;
 	}
+	void shakeCamera(const float& scatter,const float& seconds);
+	void shake(const float& delta_time);
 	ci::Matrix44f getMatrix() {
 		return parent;
 	}
 
-	const ci::Ray& getRay() {
+	ci::Ray& getRay() {
 		return ray;
 	}
 	const ci::Vec2f& getCameraAngle() {

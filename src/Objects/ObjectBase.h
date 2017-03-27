@@ -29,6 +29,9 @@ public:
 	ci::Vec3f getSize() {
 		return size;
 	}
+	ci::Vec3f getRotate() {
+		return rotate;
+	}
 	void setPos(const ci::Vec3f& _pos) {
 		pos = _pos;
 	}

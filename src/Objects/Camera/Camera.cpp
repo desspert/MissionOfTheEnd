@@ -1,5 +1,6 @@
 #include "Camera.h"
 #include "../../Utility/Input/Input.h"
+#include <random>
 MainCamera::MainCamera() : ObjectBase(ci::Vec3f(0,0,0), ci::Vec3f(0, 0, 0), ci::Vec3f(0, 0, 0))
 {
 	camera = ci::CameraPersp(1500, 1000,
@@ -18,7 +19,8 @@ MainCamera::MainCamera() : ObjectBase(ci::Vec3f(0,0,0), ci::Vec3f(0, 0, 0), ci::
 	ci::Matrix44f parent_r = ci::Matrix44f::createRotation(ci::Vec3f(0, 0, 0));
 	parent = parent_t*parent_r;
 	ci::gl::popModelView();
-	jump_flag = false;
+	shake_range = 0;
+	shake_seconds = 0;
 }
 MainCamera::MainCamera(const ci::Vec3f& _pos, const ci::Vec3f& _size, const ci::Vec3f& _rotate) : ObjectBase(_pos, _size,_rotate) {
 }
@@ -44,6 +46,7 @@ void MainCamera::draw2d()
 
 void weaponScatter(float& scatter,ci::Vec3f& insert_point, ci::Vec2f& camera_angle,
 	ci::Ray& ray, ci::CameraPersp& camera,const ci::Vec3f& pos) {
+
 	if (scatter <= 0) {
 		scatter = 0;
 	}
@@ -71,5 +74,26 @@ void MainCamera::setup()
 	camera_o.setEyePoint(ci::Vec3f(0.0f, 0.0f, 0.0f));
 	camera_o.setCenterOfInterestPoint(ci::Vec3f(0.0f, 0.0f, -1000.0f));
 	ci::gl::enableAlphaBlending();
+}
+
+void MainCamera::shakeCamera(const float & scatter, const float & seconds)
+{
+	shake_range = scatter;
+	shake_seconds = seconds;
+}
+
+void MainCamera::shake(const float& delta_time)
+{
+	shake_seconds -= delta_time;
+	if (shake_seconds > 0) {
+		std::random_device rd;
+		std::mt19937 mt(rd());
+		std::uniform_real_distribution<float> random_x(-shake_range, shake_range);
+		std::uniform_real_distribution<float> random_y(-shake_range, shake_range);
+		float buf_x = random_x(mt);
+		float buf_y = random_y(mt);
+		pos.x += buf_x;
+		pos.y += buf_y;
+	}
 }
 
