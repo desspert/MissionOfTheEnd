@@ -1,0 +1,1037 @@
+{
+  "Title": {
+     "Flash": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/GameChange.png",
+      "Pos": [ -100, -100 ],
+      "Size": [ 2000, 2000 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+    "EaseOut": [
+       { "UIState": "Color","Change": [1,1,1,0],"EasingType": "Liner","Frame": 50},
+      { "UIState": "Color","Change": [1,1,1,1],"EasingType": "Liner","Frame": 1}
+    ],
+
+      "EaseUpdate": [
+        
+      ],
+      "EaseCollision": [
+      ]
+    },
+  
+    "Mission": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/Title/mission.png",
+      "Pos": [ 375, 100 ],
+      "Size": [ 800, 700 ],
+      "Color": [ 1, 1, 1, 1 ],
+      "EaseIn": [
+
+      ],
+
+      "EaseOut": [
+
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+    "Of": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/Title/of.png",
+      "Pos": [ 1000, 170 ],
+      "Size": [ 500, 500 ],
+      "Color": [ 1, 1, 1, 1 ],
+      "EaseIn": [
+
+      ],
+
+      "EaseOut": [
+
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+
+    "TheEnd": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/Title/the_end.png",
+      "Pos": [ 475, 350 ],
+      "Size": [ 600, 600 ],
+      "Color": [ 1, 1, 1, 1 ],
+      "EaseIn": [
+
+      ],
+
+      "EaseOut": [
+
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+     "Fade": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/Result/GameChange.png",
+      "Pos": [ -100, -100 ],
+      "Size": [ 2000, 2000 ],
+      "Color" :  [0,0,0,0],
+      "EaseIn": [
+      { "UIState": "Color","Change": [0,0,0,1],"EasingType": "Liner","Frame": 150}
+      ],
+
+    "EaseOut": [
+    ],
+
+      "EaseUpdate": [
+        
+      ],
+      "EaseCollision": [
+      ]
+    },
+    "PushSpace": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/Title/push_space.png",
+      "Pos": [ 460, 600 ],
+      "Size": [ 600, 300 ],
+      "Color": [ 1, 1, 1, 1 ],
+      "EaseIn": [
+
+      ],
+
+      "EaseOut": [
+        { "UIState": "Color","Change": [1,1,1,1],"EasingType": "CubicOut","Frame":  1},
+        { "UIState": "Pos","Change": [-500,-300],"EasingType": "CubicOut","Frame": 180},
+       { "UIState": "Size","Change": [2300,1500],"EasingType": "CubicOut","Frame":  180},
+       { "UIState": "Color","Change": [1,1,1,0],"EasingType": "CubicOut","Frame":  180}
+      ],
+
+      "EaseUpdate": [
+        {
+          "UIState": "Color",
+          "Change": [ 1, 1, 1, 0 ],
+          "EasingType": "Liner",
+          "Frame": 60
+        },
+        {
+          "UIState": "Color",
+          "Change": [ 1, 1, 1, 1 ],
+          "EasingType": "Liner",
+          "Frame": 60
+        }
+      ],
+      "EaseCollision": [
+      ]
+    }
+
+  },
+
+
+  "Select": {
+    
+  
+  },
+
+ 
+
+
+  "GameMain": {
+     "MuzzleFlash": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/muzzle_flash.png",
+      "Pos": [ 0, 0 ],
+      "Size": [ 300, 300 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+   "CrossHair": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/crosshair.png",
+      "Pos": [ 675, 425 ],
+      "Size": [ 150, 150 ],
+      "Color" :  [1,1,1,1],
+    "EaseIn": [
+      
+    ],
+
+      "EaseOut": [
+        
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+    "BulletsUI": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/mw.png",
+      "Pos": [ 1200, 900 ],
+      "Size": [ 300, 100 ],
+      "Color" :  [1,1,1,1],
+    "EaseIn": [
+      
+    ],
+
+      "EaseOut": [
+        
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+     "KillsUI": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/mw.png",
+      "Pos": [ 600, 0 ],
+      "Size": [ 400, 120 ],
+      "Color" :  [1,1,1,1],
+    "EaseIn": [
+      
+    ],
+
+      "EaseOut": [
+        
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+     "HPUI": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/mw.png",
+      "Pos": [ 0, 900 ],
+      "Size": [ 300, 100 ],
+      "Color" :  [1,1,1,1],
+    "EaseIn": [
+      
+    ],
+
+      "EaseOut": [
+        
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+    
+      "BulletsTexture": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/danyaku.png",
+      "Pos": [ 1400, 925 ],
+      "Size": [ 100, 75 ],
+      "Color" :  [1,1,1,1],
+    "EaseIn": [
+      
+    ],
+
+      "EaseOut": [
+        
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+
+
+    "Kills": {
+      "UIType": "FontUI",
+      "FontPath": "UI/UITexture/Font/CP Font.ttf",
+      "Pos": [ 700, 30 ],
+      "Color": [ 1, 1, 1, 1 ],
+      "Size": 100,
+      "FontColor": [ 1, 1, 1, 1 ],
+      "FontScale": 0.3,
+      "Text": "KILL",
+
+
+      "EaseIn": [ ],
+      "EaseOut": [ ],
+      "EaseUpdate": [ ]
+    },
+
+    "Bullets": {
+      "UIType": "FontUI",
+      "FontPath": "UI/UITexture/Font/CP Font.ttf",
+      "Pos": [ 1275, 925 ],
+      "Color": [ 1, 1, 0, 1 ],
+      "Size": 100,
+      "FontColor": [ 1, 1, 0, 1 ],
+      "FontScale": 0.3,
+      "Text": "",
+
+
+      "EaseIn": [ ],
+      "EaseOut": [ ],
+      "EaseUpdate": [ ]
+    },
+
+    "HP": {
+      "UIType": "FontUI",
+      "FontPath": "UI/UITexture/Font/CP Font.ttf",
+      "Pos": [ 30, 925 ],
+      "Color": [ 1, 1, 1, 1 ],
+      "Size": 100,
+      "FontColor": [ 1, 1, 1, 1 ],
+      "FontScale": 0.3,
+      "Text": "HP",
+
+
+      "EaseIn": [ ],
+      "EaseOut": [ ],
+      "EaseUpdate": [ ]
+    },
+     "Message1": {
+      "UIType": "FontUI",
+      "FontPath": "UI/UITexture/Font/CP Font.ttf",
+      "Pos": [ 0, 20 ],
+      "Color": [ 1, 1, 1, 1 ],
+      "Size": 100,
+      "FontColor": [ 1, 1, 1, 1 ],
+      "FontScale": 0.3,
+      "Text": "",
+
+
+      "EaseIn": [ ],
+      "EaseOut": [ ],
+      "EaseUpdate": [ ]
+    },
+   "Message1Texture": {
+       "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/mw.png",
+    "Pos": [ 0, 0],
+      "Size": [ 500, 100 ],
+      "Color" :  [1,1,1,0.5],
+    "EaseIn": [
+      
+    ],
+
+      "EaseOut": [
+        
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+     "Message2": {
+      "UIType": "FontUI",
+      "FontPath": "UI/UITexture/Font/CP Font.ttf",
+      "Pos": [ 650, 850 ],
+      "Color": [ 1, 1, 1, 1 ],
+      "Size": 80,
+      "FontColor": [ 1, 1, 1, 1 ],
+      "FontScale": 0.3,
+      "Text": "",
+
+
+      "EaseIn": [ ],
+      "EaseOut": [ ],
+      "EaseUpdate": [ ]
+    },
+      "Message2Texture": {
+       "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/mw.png",
+      "Pos": [ 635, 835 ],
+      "Size": [ 275, 150 ],
+      "Color" :  [1,1,1,0.3],
+    "EaseIn": [
+      
+    ],
+
+      "EaseOut": [
+        
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+     "Message3": {
+      "UIType": "FontUI",
+      "FontPath": "UI/UITexture/Font/CP Font.ttf",
+      "Pos": [ 1050, 30 ],
+      "Color": [ 1, 0, 0, 1 ],
+      "Size": 60,
+      "FontColor": [ 1, 1, 1, 1 ],
+      "FontScale": 0.3,
+      "Text": "",
+
+
+      "EaseIn": [ ],
+      "EaseOut": [ ],
+      "EaseUpdate": [ ]
+    },
+      "Message3Texture": {
+       "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/mw.png",
+      "Pos": [ 1040, 5 ],
+      "Size": [ 450, 80 ],
+      "Color" :  [1,1,1,0.8],
+    "EaseIn": [
+      
+    ],
+
+      "EaseOut": [
+        
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+     "Message4": {
+      "UIType": "FontUI",
+      "FontPath": "UI/UITexture/Font/CP Font.ttf",
+      "Pos": [ 700, 470 ],
+      "Color": [ 1, 1, 1, 1 ],
+      "Size": 60,
+      "FontColor": [ 1, 1, 1, 1 ],
+      "FontScale": 0.3,
+      "Text": "",
+
+
+      "EaseIn": [ ],
+      "EaseOut": [ ],
+      "EaseUpdate": [ ]
+    },
+   "Message4Texture": {
+       "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/mw.png",
+    "Pos": [ 615, 435 ],
+      "Size": [ 320, 100 ],
+      "Color" :  [1,1,1,0.3],
+    "EaseIn": [
+      
+    ],
+
+      "EaseOut": [
+        
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+      
+       "W": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (7).png",
+      "Pos": [ 100, 100 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+ "A": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (5).png",
+      "Pos": [ 10, 200 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+  
+    "S": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (1).png",
+      "Pos": [ 100, 200 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+  
+    "D": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (2).png",
+      "Pos": [ 200, 200 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+   "R": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (4).png",
+      "Pos": [ 200, 100 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+    "Space": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (6).png",
+      "Pos": [ 650, 900 ],
+      "Size": [ 250, 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+  "G": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (3).png",
+      "Pos": [ 625, 450 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+  "WB": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (9).png",
+      "Pos": [ 100, 100 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+ "AB": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (10).png",
+      "Pos": [ 10, 200 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+  
+    "SB": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (11).png",
+      "Pos": [ 100, 200 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+  
+    "DB": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (13).png",
+      "Pos": [ 200, 200 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+   "RB": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (12).png",
+      "Pos":  [ 200, 100 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+    "SpaceB": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (14).png",
+      "Pos": [ 650, 900 ],
+      "Size": [ 250, 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+  "GB": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/Tutorial/116.220.60.228 (8).png",
+      "Pos": [ 650, 450 ],
+      "Size": [ 75 , 75 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+  
+  "3": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/03.png",
+      "Pos": [ 680, 400 ],
+      "Size": [ 150 , 200 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+    "EaseOut": [
+    ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    }, 
+  "2": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/02.png",
+      "Pos": [ 680, 400 ],
+       "Size": [ 150 , 200 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+  "1": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/01.png",
+      "Pos": [ 680, 400 ],
+       "Size": [ 150 , 200 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+    "Go1": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/go.png",
+      "Pos": [ 600, 400 ],
+      "Size": [ 300, 200 ],
+      "Color": [ 1, 1, 1, 1 ],
+      "EaseIn": [
+
+      ],
+
+      "EaseOut": [
+        { "UIState": "Color","Change": [1,1,1,0],"EasingType": "ElasticOut","Frame": 60}
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+    "Go2": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/go.png",
+      "Pos": [ 600, 400 ],
+      "Size": [ 300, 200 ],
+      "Color": [ 1, 1, 1, 0.5 ],
+      "EaseIn": [
+
+      ],
+
+      "EaseOut": [
+       { "UIState": "Pos","Change": [ -400, 400 ],"EasingType": "ElasticOut","Frame": 60}
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+    "Go3": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/go.png",
+      "Pos": [ 600, 400 ],
+       "Size": [ 300 , 200 ],
+      "Color" :  [1,1,1,0.5],
+      "EaseIn": [
+         
+      ],
+
+      "EaseOut": [
+       { "UIState": "Pos","Change": [ 1600, 400 ],"EasingType": "ElasticOut","Frame": 60}
+      ],
+
+      "EaseUpdate": [
+
+      ],
+      "EaseCollision": [
+      ]
+    },
+  "BossHP": {
+      "UIType": "GaugeUI",
+      "TexturePath": "UI/UITexture/GameMain/boss_gauge.png",
+      "GaugeTexturePath": "UI/UITexture/GameMain/HPBar.png",
+      "Pos": [ 400, 0 ],
+      "Size": [ 750, 300 ],
+      "Color": [ 1, 1, 1, 1 ],
+
+      "GaugePos": [ 553, 145 ],
+      "GaugeSize": [ 565, 35 ],
+
+      "EaseIn": [ ],
+      "EaseOut": [ ],
+      "EaseUpdate": [ ]
+
+    },  
+  
+   "Exprode1": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/GameChange.png",
+      "Pos": [ -100, -100 ],
+      "Size": [ 2000, 2000 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+          { "UIState": "Color","Change": [1,1,1,0],"EasingType": "Liner","Frame": 30}
+      ],
+
+    "EaseOut": [
+      { "UIState": "Color","Change": [1,1,1,1],"EasingType": "Liner","Frame": 1}
+    ],
+
+      "EaseUpdate": [
+        
+      ],
+      "EaseCollision": [
+      ]
+    },
+  
+  
+  "Exprode2": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/GameChange.png",
+      "Pos": [ -100, -100 ],
+      "Size": [ 2000, 2000 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+          { "UIState": "Color","Change": [1,1,1,0],"EasingType": "Liner","Frame": 180}
+      ],
+
+    "EaseOut": [
+      { "UIState": "Color","Change": [1,1,1,1],"EasingType": "Liner","Frame": 1}
+    ],
+
+      "EaseUpdate": [
+        
+      ],
+      "EaseCollision": [
+      ]
+    },
+  
+  
+   "Clear": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/GameMain/clear.png",
+      "Pos": [ 750, 450 ],
+      "Size": [ 0 , 100 ],
+      "Color" :  [1,1,1,0],
+      "EaseIn": [
+          { "UIState": "Color","Change": [1,1,1,1],"EasingType": "Liner","Frame": 20},
+        { "UIState": "Size","Change": [ 300 , 100 ],"EasingType": "Liner","Frame": 20},
+       { "UIState": "Pos","Change": [ 600, 450 ],"EasingType": "Liner","Frame": 20}
+      ],
+
+    "EaseOut": [
+       { "UIState": "Color","Change": [1,1,1,0],"EasingType": "Liner","Frame": 1},
+        { "UIState": "Size","Change": [ 750, 450 ],"EasingType": "Liner","Frame": 1},
+       { "UIState": "Pos","Change": [ 0, 100 ],"EasingType": "Liner","Frame": 1}
+    ],
+
+      "EaseUpdate": [
+        
+      ],
+      "EaseCollision": [
+      ]
+    },
+  "Fade": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/Result/GameChange.png",
+      "Pos": [ -100, -100 ],
+      "Size": [ 2000, 2000 ],
+      "Color" :  [0,0,0,0],
+      "EaseIn": [
+          { "UIState": "Color","Change": [1,0,0,1],"EasingType": "Liner","Frame": 60},
+      { "UIState": "Color","Change": [0,0,0,1],"EasingType": "Liner","Frame": 60}
+      ],
+
+    "EaseOut": [
+    ],
+
+      "EaseUpdate": [
+        
+      ],
+      "EaseCollision": [
+      ]
+    }
+  },
+  
+  "Result": {
+     "Win": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/Result/clear.png",
+       "Pos": [ 0, 0 ],
+      "Size": [ 1500, 1000 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+      ],
+
+    "EaseOut": [
+    ],
+
+      "EaseUpdate": [
+        
+      ],
+      "EaseCollision": [
+      ]
+    },
+   "Lose": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/Result/gameover.png",
+      "Pos": [ 0, 0 ],
+      "Size": [ 1500, 1000 ],
+      "Color" :  [1,1,1,1],
+      "EaseIn": [
+      ],
+
+    "EaseOut": [
+    ],
+
+      "EaseUpdate": [
+        
+      ],
+      "EaseCollision": [
+      ]
+    },
+   "PushSpace": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/Title/push_space.png",
+      "Pos": [ 1100, 800 ],
+      "Size": [ 400, 250 ],
+      "Color" :  [1,1,1,1],
+    "EaseIn": [
+      
+    ],
+
+      "EaseOut": [
+        
+      ],
+
+      "EaseUpdate": [
+         { "UIState": "Color","Change": [1,1,1,0.5],"EasingType": "Liner","Frame": 60},
+          { "UIState": "Color","Change": [1,1,1,1],"EasingType": "Liner","Frame": 60}
+      ],
+      "EaseCollision": [
+      ]
+    },
+   "Fade": {
+      "UIType": "CollisionUI",
+      "TexturePath": "UI/UITexture/Result/GameChange.png",
+      "Pos": [ -100, -100 ],
+      "Size": [ 2000, 2000 ],
+      "Color" :  [0,0,0,1],
+      "EaseIn": [
+          { "UIState": "Color","Change": [0,0,0,0],"EasingType": "Liner","Frame": 120}
+      ],
+
+    "EaseOut": [
+       { "UIState": "Color","Change": [0,0,0,1],"EasingType": "Liner","Frame": 120}
+    ],
+
+      "EaseUpdate": [
+        
+      ],
+      "EaseCollision": [
+      ]
+    }
+  }
+
+}
