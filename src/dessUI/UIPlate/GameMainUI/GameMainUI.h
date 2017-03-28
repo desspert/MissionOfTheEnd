@@ -6,6 +6,7 @@ class GameMainUI : public UIPlate
 private :
 	int kills;
 	int boss_max_hp;
+	int start_count;
 public:
 	
 	void setHP(const int& hp) {
@@ -24,6 +25,8 @@ public:
 	}
 	void getWeapon(const bool& collision) {
 		ui_data["G"]->setActive(collision);
+		ui_data["Message4Texture"]->setActive(collision);
+		ui_data["Message4"]->setActive(collision);
 	}
 	void setGoal() {
 		ui_data["Clear"]->setActive(true);
@@ -34,10 +37,10 @@ public:
 	void setBossHP(const int& boss_hp) {
 		ui_data["BossHP"]->gaugeChangeX(static_cast<float>(boss_hp), boss_max_hp);
 	}
-	
+	void move();
 	void setup(const dess::SceneName& name) override;
 	void bossSetup();
-	void goal();
+	bool start();
 	void update(const float& delta_time) override;
 	void draw() override;
 

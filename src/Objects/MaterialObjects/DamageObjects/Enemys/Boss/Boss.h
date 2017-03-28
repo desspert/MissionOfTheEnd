@@ -4,11 +4,12 @@
 class Boss : public EnemyBase
 {
 private:
-	ci::Vec3f attack_pos;
-	ci::Vec3f attack_size;
+	
 	int enemy_behavior_state;
 	int behavior_count;
 	int jump_count;
+	int dash_count;
+	float dash_motion_color;
 
 	void trackingToPlayer();
 	void jump();
@@ -32,11 +33,6 @@ public:
 		ci::TriMesh _right_leg);
 	void update() override;
 	void draw() override;
-	ci::Vec3f getAttackPos() {
-		return attack_pos;
-	}
-	ci::Vec3f getAttackSize() {
-		return attack_size;
-	}
+	
 
 };

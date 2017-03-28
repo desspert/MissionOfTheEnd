@@ -46,6 +46,24 @@ void SceneManager::shift(const game::SceneName& scene_name)
 	}
 }
 
+void SceneManager::shift(const game::SceneName & scene_name, const bool & result)
+{
+	switch (scene_name) {
+	case game::SceneName::TITLE:
+		SceneManager::get().scene = std::make_unique<Title>();
+		SceneManager::get().scene->setup();
+		break;
+	case game::SceneName::GAMEMAIN:
+		SceneManager::get().scene = std::make_unique<GameMain>();
+		SceneManager::get().scene->setup();
+		break;
+	case game::SceneName::RESULT:
+		SceneManager::get().scene = std::make_unique<Result>(result);
+		SceneManager::get().scene->setup();
+		break;
+	}
+}
+
 void SceneManager::keyDown(const ci::app::KeyEvent & event)
 {
 	ENV.keyDown(event);

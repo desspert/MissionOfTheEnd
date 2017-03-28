@@ -42,8 +42,13 @@ class GameMain : public SceneBase
 {
 private:
 	bool is_goal;
+	bool boss_mode;
 	bool boss_dead;
 	int goal_count;
+	int dead_count;
+	int spawn_count;
+	int player_dead_count;
+	ci::Vec3f boss_pos;
 
 	std::shared_ptr<GameMainUI> ui;
 
@@ -57,7 +62,6 @@ private:
 
 	Map* map;
 	std::shared_ptr<Sphere> skydome;
-	std::shared_ptr<Sphere> res;
 	std::shared_ptr<ci::gl::Light> light;
 	
 	ci::Vec3f result;
@@ -80,6 +84,7 @@ public:
 
 	void setup() override;
 	void resetObjects();
+	void bossSpawn();
 	void bossSetup();
 
 	void rayToAABBCollision(std::shared_ptr<ObjectBase>& obj, ci::Ray ray, ci::Vec3f& result);
@@ -91,7 +96,11 @@ public:
 	void uiUpdate(const float& delta_time);
 	void enemySpawn();
 	void bossCollision();
+	void bossIsDead();
+	void bossDead();
+	bool playerDead();
 	void playerUpdate(const float& delta_time);
+	void enemyUpdate();
 	void weaponUpdate(const float& delta_time);
 	void update(const float& delta_time) override;
 	void eraseObjects();

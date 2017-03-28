@@ -7,7 +7,8 @@ class Title : public SceneBase
 {
 private:
 	std::shared_ptr<TitleUI> ui;
-
+	int count;
+	bool start;
 public:
 	Title(){}
 	void setup() override;

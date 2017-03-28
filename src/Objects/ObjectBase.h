@@ -5,7 +5,8 @@
 enum ObjectType {
 	WALL = 0,
 	Enemy = 1,
-	BREAKWALL = 2
+	BREAKWALL = 2,
+	BOSSCUBE = 3
 };
 class ObjectBase {
 protected:

@@ -6,7 +6,7 @@
 #include "cinder/gl/gl.h"
 #include <unordered_map>
 #define SE SoundManager::get()
-
+//‰ß‹Ž‚Ìˆâ•¨
 //class SoundManager
 //{
 //private:
@@ -91,7 +91,7 @@ public:
 		gain = ctx_->makeNode(new ci::audio::GainNode());
 
 		player_node = node_;
-		gain->setValue(1.0f);
+		gain->setValue(0.3f);
 
 		player_node >> gain >> ctx_->getOutput();
 	}
