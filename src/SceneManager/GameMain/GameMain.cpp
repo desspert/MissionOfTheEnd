@@ -102,7 +102,7 @@ void GameMain::isGoal()
 			else {
 				SE.allStop();
 				SE.allCrear();
-				SCENE.shift(game::SceneName::RESULT,true);
+				SCENE.shift(game::SceneName::RESULT, true);
 			}
 		}
 
@@ -191,14 +191,14 @@ void GameMain::mapObjectsSetup()
 	breakWallSetup();
 	skydome = std::make_shared<Sphere>(ci::Vec3f(0, 0, 0), ci::Vec3f(1000, 1000, 1000), ci::Vec3f(0, 0, 0), "skydome", "Objects/SkyDome/Skydome151004y.jpg");
 	skydome->setup();
-	
+
 	map = new Map(ci::Vec3f(0, -3, 4), ci::Vec3f(100, 10, 100), ci::Vec3f(0, 0, 0), "map", "Objects/Map/20141130172655.jpg", "Objects/Map/terrain.obj");
 	map->setup();
-	
+
 	weapons.push_back(std::make_shared<Deagle>(ci::Vec3f(0, 10, 4), ci::Vec3f(0.01f, 0.01f, 0.01f), ci::Vec3f(0, 0, 0), "Deagle", "Objects/Weapons/Deagle/pist_deagle.jpg"));
 
 
-	
+
 }
 
 void GameMain::rideOnTerrain()
@@ -275,7 +275,7 @@ void GameMain::mapTipSetup(const std::string& map_path)
 				}
 				break;
 			case 8:
-				object.push_back(std::make_shared<Cube>(ci::Vec3f(x, 1, z), ci::Vec3f(6, 12, 6), ci::Vec3f(0,0,0), "boss_cube", "Objects/Wall/GameChange.png",true));
+				object.push_back(std::make_shared<Cube>(ci::Vec3f(x, 1, z), ci::Vec3f(6, 12, 6), ci::Vec3f(0, 0, 0), "boss_cube", "Objects/Wall/GameChange.png", true));
 				boss_pos = ci::Vec3f(x, 1, z);
 				break;
 			case 9:
@@ -300,8 +300,8 @@ void GameMain::lightSetup()
 	glLightModeli(GL_LIGHT_MODEL_COLOR_CONTROL, GL_SEPARATE_SPECULAR_COLOR);
 }
 void GameMain::setup()
-{	
-	
+{
+
 	uiSetup();
 	lightSetup();
 	mapObjectsSetup();
@@ -326,7 +326,7 @@ void GameMain::bossSpawn()
 	if (spawn_count == 300) {
 		ui->bossSetup();
 		SE.find("boss_scream")->start();
-		
+
 	}
 	if (spawn_count == 360) {
 		CAMERA.shakeCamera(1.3f, 0.7f);
@@ -384,7 +384,7 @@ void GameMain::bossSetup()
 	weapons.push_back(std::make_shared<Deagle>(ci::Vec3f(45, 10, 70), ci::Vec3f(0.01f, 0.01f, 0.01f), ci::Vec3f(0, 0, 0), "Deagle", "Objects/Weapons/Deagle/pist_deagle.jpg"));
 	mapTipSetup("MapData/boss_map.txt");
 	rideOnTerrain();
-	
+
 	SE.find("boss_bgm")->start();
 	SE.find("boss_bgm")->setLoopEnabled(true);
 }
@@ -426,7 +426,34 @@ void GameMain::physicsJudge(std::shared_ptr<ObjectBase>& it)
 		//オブジェクト同士の物理判定（AABB）
 		it->setPos(returnBoxToBox(it->getPos(), it->getSize(), other->getPos(), other->getSize()));
 	}
-	
+
+}
+
+void GameMain::collisionAABB(std::shared_ptr<ObjectBase>& it)
+{
+	if (!returnBoxToRayPoint(it->getPos(), it->getSize(), result)) return;
+	for (auto weapon : weapons) {
+
+		if (!weapon->isTrigger()) continue;
+		if (it->getHp() < 0) continue;
+		it->Damage(weapon->getAttack());
+
+		if (it->getObjectType() == ObjectType::BREAKWALL) {
+			for (int i = 0; i < 4; i++) {
+				perticle.push_back(std::make_shared<Perticle>(result, ci::Vec3f(0.1, 0.1, 0.1), ci::Vec3f(0, 0, 0), "", ""));
+				perticle.back()->setColor(ci::Vec3f(1, 1, 0));
+			}
+			break;
+		}
+		else {
+			for (int i = 0; i < 4; i++) {
+				perticle.push_back(std::make_shared<Perticle>(result, ci::Vec3f(0.1, 0.1, 0.1), ci::Vec3f(0, 0, 0), "", ""));
+			}
+			break;
+		}
+	}
+
+
 }
 
 void GameMain::collision(std::shared_ptr<ObjectBase>& it)
@@ -435,7 +462,8 @@ void GameMain::collision(std::shared_ptr<ObjectBase>& it)
 	physicsJudge(it);
 
 	//プレイヤーと接触したらダメージ
-	if (collisionBoxToBox(player->getPos(), player->getSize(), it->getPos(), it->getSize() + ci::Vec3f(0.1f, 0.1f, 0.1f))&&
+	if (collisionBoxToBox(player->getPos(), player->getSize(),
+		it->getPos(), it->getSize() + ci::Vec3f(0.1f, 0.1f, 0.1f)) &&
 		it->getObjectType() == ObjectType::Enemy) {
 		if (it->getHp() > 0) {
 			player->Damage(it->getAttack());
@@ -445,21 +473,9 @@ void GameMain::collision(std::shared_ptr<ObjectBase>& it)
 	//AABBの当たり判定を持っていたらrayと判定
 	if ((it->getAABB()) != nullptr) {
 		rayToAABBCollision(it, CAMERA.getRay(), result);
-		if (returnBoxToRayPoint(it->getPos(), it->getSize(), result)) {
-			for (auto weapon : weapons) {
-
-				if (weapon->isTrigger()) {
-					if (it->getHp() < 0) continue;
-					it->Damage(weapon->getAttack());
-					for (int i = 0; i < 4; i++) {
-						perticle.push_back(std::make_shared<Perticle>(result, ci::Vec3f(0.1, 0.1, 0.1), ci::Vec3f(0, 0, 0), "", ""));
-					}
-					break;
-				}
-			}
-		}
+		collisionAABB(it);
 	}
-	
+
 }
 void GameMain::uiUpdate(const float& delta_time)
 {
@@ -533,7 +549,7 @@ void GameMain::bossCollision()
 void GameMain::bossIsDead()
 {
 	for (auto& it : boss) {
-		if (it->getHp() <= 0) 
+		if (it->getHp() <= 0)
 			boss_dead = true;
 	}
 }
@@ -549,7 +565,7 @@ void GameMain::bossDead()
 	if (dead_count == 1 ||
 		dead_count == 60 ||
 		dead_count == 100 ||
-		dead_count == 170 ) {
+		dead_count == 170) {
 		CAMERA.shakeCamera(1.3f, 0.7f);
 		SE.find("boss_landing")->start();
 		ui->ui_data["Exprode1"]->setActive(true);
@@ -562,7 +578,7 @@ void GameMain::bossDead()
 		ui->ui_data["Exprode2"]->setActive(true);
 	}
 
-	if (dead_count == 600) {
+	if (dead_count == 400) {
 		is_goal = true;
 	}
 }
@@ -592,7 +608,7 @@ void GameMain::playerUpdate(const float& delta_time)
 	//rayToMeshCollision(CAMERA.getRay(), result, map->getVertices(), map->getIndices());
 	player->update(delta_time);
 	player->setPos(rideMap(player->getRideMapRay(), player->getPos(), player->getSize()));
-	
+
 
 	bossCollision();
 
@@ -604,7 +620,7 @@ void GameMain::playerUpdate(const float& delta_time)
 		it->update();
 		collision(it);
 	}
-	
+
 }
 void GameMain::enemyUpdate()
 {
@@ -675,9 +691,10 @@ void GameMain::eraseObjects()
 			break;
 		}
 		if (!(*it)->isDead()) continue;
-			ui->addKills();
-			object.erase(it);
-			break;
+		player->addHp();
+		ui->addKills();
+		object.erase(it);
+		break;
 	}
 	for (auto it = perticle.begin(); it != perticle.end(); it++) {
 		if ((*it)->isDead()) {
@@ -704,7 +721,7 @@ void GameMain::draw()
 	for (auto& it : perticle) {
 		it->draw();
 	}
-	
+
 	for (auto& it : goal) {
 		it->draw();
 	}
@@ -723,7 +740,7 @@ void GameMain::draw()
 
 void GameMain::shift()
 {
-	
+
 }
 
 void GameMain::drawSkyDome()

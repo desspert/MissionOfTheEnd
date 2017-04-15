@@ -22,6 +22,9 @@ public:
 		}
 		return color_r;
 	}
+	void addHp() {
+		hp++;
+	}
 	void Damage(const int& damage) override;
 	void setup() override;
 	void update(const float& delta_time) override;

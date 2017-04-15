@@ -92,6 +92,7 @@ public:
 
 	ci::Vec3f rideMap(ci::Ray ray, const ci::Vec3f& pos, const ci::Vec3f& size);
 	void physicsJudge(std::shared_ptr<ObjectBase>& it);
+	void collisionAABB(std::shared_ptr<ObjectBase>& it);
 	void collision(std::shared_ptr<ObjectBase>& it);
 	void uiUpdate(const float& delta_time);
 	void enemySpawn();

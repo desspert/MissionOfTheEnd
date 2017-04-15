@@ -27,3 +27,10 @@ void BreakWall::draw()
 	TEX.get(name).disable();
 	ci::gl::popModelView();
 }
+bool DamageObject::isDead()
+{
+	if (hp <= 0) {
+		return true;
+	}
+	return false;
+}

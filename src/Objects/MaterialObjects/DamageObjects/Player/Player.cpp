@@ -10,6 +10,7 @@ Player::Player(const ci::Vec3f & _pos,
 	: DamageObject(_pos, _size, _rotate, _name, _path)
 {
 	CAMERA.setPos(_pos);
+	CAMERA.init();
 	walk_count = 0;
 }
 

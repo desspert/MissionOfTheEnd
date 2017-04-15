@@ -2,6 +2,7 @@
 #include "cinder/gl/gl.h"
 #include "SceneManager/SceneManager.h"
 #include "cinder/Timeline.h"
+#include "Utility/Input/Input.h"
 class MainProject : public ci::app::AppNative {
 private:
 	float delta_time;
@@ -61,11 +62,13 @@ void MainProject::update()
 	delta_time = std::abs(delta_time - timeline().getCurrentTime());
 	SCENE.update(delta_time);
 	delta_time = timeline().getCurrentTime();
+	
 }
 
 void MainProject::draw()
 {
 	SCENE.draw();
+	
 }
 
 

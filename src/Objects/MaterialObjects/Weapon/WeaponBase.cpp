@@ -35,13 +35,16 @@ void WeaponBase::relordMotion(const float& delta_time)
 {
 
 	if (status.bullets == status.max_bullets) return;
-
-	if (ENV.pushKey(ci::app::KeyEvent::KEY_r)) {
-		motion.relord = true;
-		SE.find("relord")->start();
+	
+	if (!motion.relord) {
+		if (ENV.pushKey(ci::app::KeyEvent::KEY_r) ||
+			status.bullets <= 0) {
+			motion.relord = true;
+			SE.find("relord")->start();
+		}
 	}
-
 	if (!motion.relord) return;
+	
 
 	motion.relord_time += delta_time;
 

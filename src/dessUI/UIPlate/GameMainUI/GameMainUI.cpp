@@ -70,7 +70,7 @@ void GameMainUI::setup(const dess::SceneName & name)
 	ui_data["Message2Texture"]->setActive(true);
 	ui_data["Message3Texture"]->setActive(true);
 	ui_data["Message1"]->setActive(true);
-	ui_data["Message1"]->fontSetText(u8"移動  リロード");
+	ui_data["Message1"]->fontSetText(u8"移動");
 	ui_data["Message2"]->setActive(true);
 	ui_data["Message2"]->fontSetText(u8"ジャンプ");
 	ui_data["Message3"]->setActive(true);

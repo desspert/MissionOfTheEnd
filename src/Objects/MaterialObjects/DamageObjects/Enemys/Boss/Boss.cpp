@@ -166,7 +166,7 @@ Boss::Boss(const ci::Vec3f & _pos,
 		80.0f,
 		ci::ColorA(0.0f, 0.0f, 0.0f, 1.0f));
 
-	hp = 15000;
+	hp = 10000;
 
 	motion.move_left_leg = 0;
 	motion.move_right_leg = 0;

@@ -13,4 +13,5 @@ public:
 		const int& _hp);
 	void update()override;
 	void draw()override;
+	bool isDead() override;
 };
